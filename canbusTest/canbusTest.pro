@@ -1,0 +1,17 @@
+QT += testlib serialbus
+QT -= gui
+
+CONFIG += qt console warn_on depend_includepath testcase
+CONFIG -= app_bundle
+
+TEMPLATE = app
+
+SOURCES +=  tst_canbus.cpp \
+    ../app/canbus.cpp \
+    ../app/configuration.cpp
+
+HEADERS += \
+    ../app/canbus.h \
+    ../app/configuration.h
+
+INCLUDEPATH += ../app

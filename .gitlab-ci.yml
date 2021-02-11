@@ -1,0 +1,54 @@
+default:
+  image: terotuni/alpine-qt5.15.1:latest
+
+stages:
+  - analyse
+  - build
+  - after-build-analysis
+  - test-canFrameHandler
+  - test-canbus
+  - test-canFrameBuffer
+
+
+Static analysis with cppcheck:
+  stage: analyse
+  script: 
+    - cppcheck -v --enable=all . 
+
+Project build:
+  stage: build
+  script:
+    - qmake-qt5
+    - compiledb make --silent
+  artifacts:
+    paths:
+      - compile_commands.json
+      - canFrameHandlerTest/canFrameHandlerTest
+      - canbusTest/canbusTest
+      - canFrameBufferTest/canFrameBufferTest
+      - app/app
+    expire_in: 7d
+
+Static analysis with clazy:
+  stage: after-build-analysis
+  script:
+    - clazy-standalone -checks=level0,level1 -p compile_commands.json app/main.cpp --ignore-dirs=/usr/include --ignore-included-files
+#    - clazy-standalone -checks=level0,level1 -p compile_commands.json app/canbus.cpp --ignore-dirs=/usr/include --ignore-included-files
+
+Run CanFrameHandler tests:
+  stage: test-canFrameHandler
+  script:
+    - ./canFrameHandlerTest/canFrameHandlerTest
+  allow_failure: true
+
+Run Canbus tests:
+  stage: test-canbus
+  script:
+    - ./canbusTest/canbusTest
+  allow_failure: true
+
+Run CanFrameBuffer tests:
+  stage: test-canFrameBuffer
+  script:
+    - ./canFrameBufferTest/canFrameBufferTest
+  allow_failure: true

@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>fonts/Roboto-Black.ttf</file>
+        <file>fonts/Roboto-LightItalic.ttf</file>
+        <file>fonts/Roboto-Medium.ttf</file>
+        <file>fonts/Roboto-MediumItalic.ttf</file>
+        <file>fonts/Roboto-Regular.ttf</file>
+        <file>fonts/Roboto-Thin.ttf</file>
+        <file>fonts/Roboto-ThinItalic.ttf</file>
+        <file>images/ringlet.png</file>
+        <file>images/Aurora_Powertrains_Logo_violetti_nega.png</file>
+        <file>images/eSled_logo_nega_RGB.png</file>
+        <file>images/staticLogo.png</file>
+        <file>images/batteryLit.png</file>
+        <file>images/highBeam.png</file>
+        <file>images/engineFault.png</file>
+        <file>images/highTemp.png</file>
+        <file>images/hvBatteryLit.png</file>
+        <file>images/lowTemp.png</file>
+    </qresource>
+    <qresource prefix="/qmlcomponents">
+        <file>NumberField.qml</file>
+        <file>BatteryIndicator.qml</file>
+        <file>LineChart.qml</file>
+        <file>DriveView.qml</file>
+        <file>Splashscreen.qml</file>
+        <file>ChargeView.qml</file>
+        <file>AbstractView.qml</file>
+        <file>Clock.qml</file>
+        <file>ConfigView.qml</file>
+    </qresource>
+</RCC>
